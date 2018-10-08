@@ -15,6 +15,7 @@ suppressPackageStartupMessages(library(gapminder))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(knitr))
 ```
 
 ## Exercise \#1: Reshaping data
@@ -50,3 +51,61 @@ exercise instructions:
 two or more countries. Use `knitr::kable()` to make this table look
 pretty in your rendered homework. Take advantage of this new data shape
 to scatterplot life expectancy for one country against that of another.*
+
+**First, let’s use `dplyr` to get the information we want to focus on.
+We will select for the variables (i.e. columns) we want, make sure it is
+grouped by country, and filter only for the countries desired. This will
+be stored under “reshape”.**
+
+``` r
+reshape <- gapminder %>% 
+  select(year, country, lifeExp)%>% 
+  group_by(country)%>% 
+  filter(country == "Canada" | country == "France" | country == "Japan")
+```
+
+**Now we can reformat this so that there is only one row per year and
+present this data in a table by using `knitr::kable()`. We will round to
+the nearest decimal point.**
+
+Activity \#2 Create your own cheatsheet patterned after Jenny’s but
+focused on something you care about more than comics\! Inspirational
+examples:
+
+``` r
+spread(reshape, key = country, value = lifeExp) %>% 
+  knitr:: kable(format = "markdown", justify = "centre", digits = 1, caption = "Life expectancy 1952-2007 for selected countries: Canada, France, and Japan.")
+```
+
+| year | Canada | France | Japan |
+| ---: | -----: | -----: | ----: |
+| 1952 |   68.8 |   67.4 |  63.0 |
+| 1957 |   70.0 |   68.9 |  65.5 |
+| 1962 |   71.3 |   70.5 |  68.7 |
+| 1967 |   72.1 |   71.5 |  71.4 |
+| 1972 |   72.9 |   72.4 |  73.4 |
+| 1977 |   74.2 |   73.8 |  75.4 |
+| 1982 |   75.8 |   74.9 |  77.1 |
+| 1987 |   76.9 |   76.3 |  78.7 |
+| 1992 |   78.0 |   77.5 |  79.4 |
+| 1997 |   78.6 |   78.6 |  80.7 |
+| 2002 |   79.8 |   79.6 |  82.0 |
+| 2007 |   80.7 |   80.7 |  82.6 |
+
+**This same data may also be presented nicely with a scatter plot.**
+
+``` r
+reshape %>% 
+  ggplot(aes(year, lifeExp))+
+  geom_point(aes(colour = country))+
+  theme_classic()+
+  ggtitle("Life Expectancy from 1952-2007")+
+  ylab("Life Expectancy (years)")+
+  xlab("Year")
+```
+
+![](hw04-ntjjmak_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+**The next exercise will be to explore `join`. Here are the instructions
+for the exercise: Create your own cheatsheet patterned after Jenny’s but
+focused on something you care about more than comics\! **
