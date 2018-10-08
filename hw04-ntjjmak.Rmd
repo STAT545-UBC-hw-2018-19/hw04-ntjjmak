@@ -1,0 +1,43 @@
+---
+title: "hw004_ntjjmak"
+author: "Nicole Mak"
+date: "07/10/2018"
+output: github_document
+---
+
+## There are two tasks for this assignment.
+
+# 1. Data reshaping.
+# 2. Perform a join.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+To start, let's load the packages to be used for data exploration.
+
+```{r}
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
+```
+
+## Exercise #1: Reshaping data
+
+The data to be used for the exercise is "gapminder".
+
+Here is the data set in its original form:
+
+```{r}
+gapminder
+```
+
+
+To practise reshaping the data,
+
+
+```{r}
+summary(ChickWeight)
+```
+
