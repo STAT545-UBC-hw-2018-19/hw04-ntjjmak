@@ -3,11 +3,10 @@ hw004\_ntjjmak
 Nicole Mak
 07/10/2018
 
-## There are two tasks for this assignment.
+### There are two tasks for this assignment.
 
-# 1\. Data reshaping.
-
-# 2\. Perform a join.
+1.  Data reshaping.
+2.  Perform a join.
 
 To start, let’s load the packages to be used for data exploration.
 
@@ -15,6 +14,7 @@ To start, let’s load the packages to be used for data exploration.
 suppressPackageStartupMessages(library(gapminder))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(tidyr))
 ```
 
 ## Exercise \#1: Reshaping data
@@ -42,17 +42,11 @@ gapminder
     ## 10 Afghanistan Asia       1997    41.8 22227415      635.
     ## # ... with 1,694 more rows
 
-To practise reshaping the data,
+To practise reshaping the data, I have selected prompt \#2. I have not
+yet tried `knitr::kable()`, so this is a good chance. Here are the
+exercise instructions:
 
-``` r
-summary(ChickWeight)
-```
-
-    ##      weight           Time           Chick     Diet   
-    ##  Min.   : 35.0   Min.   : 0.00   13     : 12   1:220  
-    ##  1st Qu.: 63.0   1st Qu.: 4.00   9      : 12   2:120  
-    ##  Median :103.0   Median :10.00   20     : 12   3:120  
-    ##  Mean   :121.8   Mean   :10.72   10     : 12   4:118  
-    ##  3rd Qu.:163.8   3rd Qu.:16.00   17     : 12          
-    ##  Max.   :373.0   Max.   :21.00   19     : 12          
-    ##                                  (Other):506
+*Make a tibble with one row per year and columns for life expectancy for
+two or more countries. Use `knitr::kable()` to make this table look
+pretty in your rendered homework. Take advantage of this new data shape
+to scatterplot life expectancy for one country against that of another.*
